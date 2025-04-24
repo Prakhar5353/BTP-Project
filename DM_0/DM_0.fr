@@ -1,0 +1,86 @@
+(* ************************** *)
+(* ****** Introduction ****** *)
+(******************************)
+
+(* This is what the generated model file will be named. Keep the name short, will be helpful for loading in MadGraph. *)
+
+M$ModelName = "DM_0";
+
+(* This is optional. Required if you want to publish your model on the FeynRules website. *)
+
+M$Information = {
+  Authors      -> "A. Sarkar", 
+  Version      -> "1.0.1",
+  Date         -> "13. 08. 2024",
+  Institutions -> "IIT Guwahati",
+  Emails       -> "sarkar.abhik@iitg.ac.in"
+};
+
+(* ************************** *)
+(* *** Interaction orders *** *)
+(* ************************** *)
+
+M$InteractionOrderHierarchy = {
+  {NP, 1}
+};
+
+
+(* ************************** *)
+(* **** Particle classes **** *)
+(* ************************** *)
+
+M$ClassesDescription = {
+
+(* Dark Matter field defined here. *)
+
+  F[5] == {
+    ClassName        -> Chi,
+    SelfConjugate    -> False,
+    Mass             -> {MChi, 500},
+    Width            -> 0,    
+    PropagatorLabel  -> "Chi",
+    PropagatorType   -> Straight,                         
+    PropagatorArrow  -> Forward,
+    PDG              -> 100145,
+    ParticleName     -> "~Chi",
+    AntiParticleName -> "~Chi~",
+    FullName         -> "Chi"
+  }
+};
+
+(* ************************** *)
+(* *****   Parameters   ***** *)
+(* ************************** *)
+
+
+M$Parameters = {
+
+(* Dark Matter and EFT parameters. *)
+(* The New Physics scale is set to 1000.0 GeV. The InteractionOrder {QED, -1} is arbitrary choice. *)
+(* cDMl is the coupling of DM to LL field. This is shown as an example here. *)
+(* cDMe is the coupling of DM to lR field. Add it. Consider this as an exercise. *)
+
+   LambdaEFT == {
+    ParameterType    -> External, 
+    Value            -> 1000.0,
+    InteractionOrder -> {QED,-1},
+    Description      -> "New Physics Scale"
+  },
+  
+  cDMl == {
+    ParameterType -> External,
+    InteractionOrder -> {NP,1},
+    Value         -> 1.0,
+    Description   -> "Wilson DM-LL"
+  }
+};
+
+(* ************************** *)
+(* *****   Lagrangian   ***** *)
+(* ************************** *)
+
+(* The Dark Matter terms are added here. Note that the mass and kinetic term are irrelevant. *)
+(* The Dark Matter interaction with LL is written here. Consider it as an exercise to write the term for interaction with lR. *)
+(* FlavorExpand -> True expands all possible indices. We prefer this usually for NP models. *)
+
+LDM := Block[{mu}, ExpandIndices[(cDMl / LambdaEFT^2) * (LLbar.Ga[mu].LL + lRbar.Ga[mu].lR) * (Chibar.Ga[mu].Chi), FlavorExpand -> True]];
