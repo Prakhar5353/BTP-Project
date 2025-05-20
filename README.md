@@ -4,7 +4,7 @@ This repository stores all the Jupyter and Mathematica notebooks, as well as the
 
 ## Project Overview
 
-We developed a collider-based framework using leptophilic effective operators to model sub-GeV Dark Matter (DM) production through mono-photon signatures at \(e^+e^-\) colliders. The interactions were implemented in **FeynRules** and exported to **MadGraph** for event generation at relevant center-of-mass energies.
+We developed a collider-based framework using leptophilic effective operators to model sub-GeV Dark Matter (DM) production through mono-photon signatures at electron-positron colliders. The interactions were implemented in **FeynRules** and exported to **MadGraph** for event generation at relevant center-of-mass energies.
 
 Both signal and background processes were analyzed, with a focus on a dominant Standard Model neutrino background. Simulated event distributions were compared with theoretical differential cross-sections across various key kinematic variables. To explore the potential for signal-background discrimination, a simple artificial neural network was trained using these variables.
 
