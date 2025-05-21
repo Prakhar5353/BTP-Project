@@ -15,7 +15,7 @@ Both signal and background processes were analyzed, with a focus on a dominant S
 - **Description**: Calculates the matrix element squared for a key process. Due to the complexity of the spinor algebra, conventional trace methods were not sufficient. Helicity amplitude methods were used instead, which allow the problem to be handled computationally using vectors and matrices.
 
 ### 2. Cross-Section Computations
-- **File**: `boltzmann_proper.ipynb`  
+- **File**: `collider_notebook.ipynb`  
 - **Description**: Contains basic calculations and plots of various cross-sections relevant to the DM production and background processes.
 
 ### 3. Model Implementation
