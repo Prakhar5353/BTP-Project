@@ -1,40 +1,48 @@
-# Thesis Project: Collider-based Search for Sub-GeV Dark Matter via Mono-photon Signatures
+# Thesis Project: Collider-based and Direct Detection Study of Sub-GeV Dark Matter
 
-This repository stores all the Jupyter and Mathematica notebooks, as well as the FeynRules scripts, used in my undergraduate thesis project—part of my Bachelor’s degree in Physics.
+This repository contains all the Jupyter and Mathematica notebooks, along with FeynRules scripts, used in my undergraduate thesis project—part of my Bachelor's degree in Physics.
 
 ## Project Overview
 
-We developed a collider-based framework using leptophilic effective operators to model sub-GeV Dark Matter (DM) production through mono-photon signatures at electron-positron colliders. The interactions were implemented in **FeynRules** and exported to **MadGraph** for event generation at relevant center-of-mass energies.
+Current dark matter (DM) detection strategies largely focus on weakly interacting massive particles (WIMPs) in the 1–1000 GeV mass range, which are expected to produce nuclear recoil signals detectable by conventional experiments. However, DM candidates lighter than 1 GeV are often overlooked, primarily because their interactions typically fall below the detection thresholds of such experiments.
 
-Both signal and background processes were analyzed, with a focus on a dominant Standard Model neutrino background. Simulated event distributions were compared with theoretical differential cross-sections across various key kinematic variables. To explore the potential for signal-background discrimination, a simple artificial neural network was trained using these variables.
+Despite this, sub-GeV DM remains a well-motivated theoretical possibility, especially given the lack of experimental confirmation for WIMPs. These lighter candidates can still interact with atomic electrons, producing detectable single-electron signals via ionization. Furthermore, they could be produced at electron-positron colliders through interactions mediated by leptophilic operators connecting the DM sector to Standard Model leptons.
+
+This project builds upon earlier work done in a mini-project focused on direct detection, and extends it into collider-based studies of sub-GeV DM.
+
+In the second phase of the project, we developed a collider-based framework using leptophilic effective operators to simulate sub-GeV DM production through mono-photon signatures at electron-positron colliders. The relevant interactions were implemented in **FeynRules** and exported to **MadGraph** for event generation at chosen center-of-mass energies. We analyzed both the DM signal and the dominant Standard Model background process, namely electron-positron to neutrino-antineutrino plus photon. Simulated event distributions were compared with theoretical expectations, and a simple neural network was trained to explore signal-background separation using key kinematic variables.
 
 ## Repository Structure
 
 ### 1. Matrix Element Calculation
 - **File**: `matrix_element.nb` (Mathematica Notebook)  
-- **Description**: Calculates the matrix element squared for a key process. Due to the complexity of the spinor algebra, conventional trace methods were not sufficient. Helicity amplitude methods were used instead, which allow the problem to be handled computationally using vectors and matrices.
+- **Description**: Calculates the squared matrix element for a key process using helicity amplitude methods, which offer a more computationally manageable approach than conventional trace techniques.
 
-### 2. Cross-Section Computations
+### 2. Collider Detection Computations
 - **File**: `collider_notebook.ipynb`  
-- **Description**: Contains basic calculations and plots of various cross-sections relevant to the DM production and background processes.
+- **Description**: Performs basic calculations and plots for cross-sections relevant to both signal and background processes.
 
-### 3. Model Implementation
+### 3. Direct Detection Computations
+- **File**: `directdetection.ipynb`  
+- **Description**: Contains calculations related to the direct detection of sub-GeV DM via electron recoil. This notebook builds upon techniques from an earlier mini-project, exploring the theoretical viability of detecting such particles in low-threshold electron recoil experiments.
+
+### 4. Model Implementation
 - **Folder**: `DM_0/`  
-- **Contents**: FeynRules scripts for implementing new DM-SM interaction operators.  
-- **Purpose**: Generates **UFO (Universal FeynRules Output)** files, which are compatible with MadGraph for event generation.
+- **Contents**: FeynRules scripts for implementing custom DM-SM interaction operators.  
+- **Purpose**: Generates **UFO (Universal FeynRules Output)** files for use in MadGraph to simulate collider events.
 
-### 4. Data Analysis and Neural Network Training
+### 5. Data Analysis and Neural Network Training
 - **Folder**: `Data_analysis/`  
-- **Contents**: Jupyter Notebooks that:
-  - Analyze signal and background events generated using MadGraph.
-  - Create histograms for various observables.
-  - Train a simple artificial neural network to test signal-background separation using kinematic features.
+- **Contents**: Jupyter Notebooks for:
+  - Analyzing signal and background data generated in MadGraph.
+  - Plotting key observables using histograms.
+  - Training a basic artificial neural network to distinguish signal from background based on kinematic features.
 
 ## Skills and Tools
 
 Throughout this project, I gained experience with:
 
-- **FeynRules** – for implementing effective field theory operators and generating UFO models.
-- **MadGraph5_aMC@NLO** – for simulating collider events based on custom interaction models.
+- **FeynRules** – for implementing effective field theory models and exporting to MadGraph.
+- **MadGraph5_aMC@NLO** – for event generation based on custom interaction models.
 - **Mathematica** – for matrix element calculations using helicity amplitude techniques.
-- **Python & Jupyter Notebooks** – for data analysis, visualization, and machine learning using libraries like NumPy, Matplotlib, and PyTorch.
+- **Python & Jupyter** – for data analysis, visualization, and neural network training using libraries like NumPy, Matplotlib, and PyTorch.
